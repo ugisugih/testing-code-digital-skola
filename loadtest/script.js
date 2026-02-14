@@ -1,4 +1,6 @@
 // loadtest/script.js
+/* global __ENV */
+
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 
@@ -14,7 +16,7 @@ export const options = {
   },
 };
 
-const BASE = process.env.BASE_URL || 'http://localhost:3000';
+const BASE = __ENV.BASE_URL || 'http://localhost:3000';
 
 export default function () {
   const create = http.post(`${BASE}/notes`, JSON.stringify({ title: 't', body: 'b' }), { headers: { 'Content-Type': 'application/json' }});
