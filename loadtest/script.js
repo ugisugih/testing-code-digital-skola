@@ -14,7 +14,7 @@ export const options = {
   },
 };
 
-const BASE = __ENV.BASE_URL || 'http://localhost:3000';
+const BASE = process.env.BASE_URL || 'http://localhost:3000';
 
 export default function () {
   const create = http.post(`${BASE}/notes`, JSON.stringify({ title: 't', body: 'b' }), { headers: { 'Content-Type': 'application/json' }});
