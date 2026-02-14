@@ -76,3 +76,4 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: loadtest/script.js
+          flags: --env BASE_URL=http://host.docker.internal:3000
