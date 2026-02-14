@@ -60,9 +60,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install k6
+      - name: Start Server 
         run: |
-          sudo apt update
-          sudo apt install -y k6
+          npm ci
+          npm start &
+          sleep 5
 
-      - run: k6 run loadtest/script.js
+      - name: Run k6 Smoke Test
+        uses: grafana/k6-action@v0.1.0
+        with:
+          filename: loadtest/script.js
